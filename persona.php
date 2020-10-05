@@ -1,6 +1,6 @@
 <?php
 
-class Persona {
+Abstract class Persona {
     // Atributos
     protected $nombre;
     protected $apellido;
@@ -47,6 +47,24 @@ class Persona {
 
         return $this;
     }
+
+    /**
+    * Esta función recibe un parámetro -> $mensaje
+    * Devuelve un mensaje
+    * :String significa que devuelve un String
+    */
+    public final function saludar(String $mensaje):String {
+        return "{$mensaje} {$this->getNombre()} {$this->getApellido()}";
+    }
+
+    abstract function calcularLetraDni($dni);
+
+    // public function calcularLetraDni($dni) {
+    //     $letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+    //     $numero = $dni % 23;
+    //     $letraDni = $letras[$numero];
+    //     return $letraDni;
+    // }
 
 }
 

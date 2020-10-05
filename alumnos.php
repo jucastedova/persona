@@ -1,14 +1,13 @@
 <?php
-include 'persona.php';
-class Alumnos extends Persona {
+require_once 'persona.php';
+final class Alumnos extends Persona { // Ya no se puede heredar, con el final puesto
     // Atributos
     private $numeroMatricula;
     private $notaProgramacion;
     // Constructor
-    function construct($nombre, $apellido, $numeroMatricula, $notaProgramacion) {
+    function __construct($nombre, $apellido, $numeroMatricula) {
         parent::__construct($nombre, $apellido);
         $this->numeroMatricula = $numeroMatricula;
-        $this->notaProgramacion = $notaProgramacion;
     }
     // Métodos Getters y Setters
     public function getNumeroMatricula() {
@@ -28,7 +27,22 @@ class Alumnos extends Persona {
         $this->notaProgramacion = $notaProgramacion;
         return $this;
     }
+
+    public function calcularLetraDni($dni) {
+        $letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+        $numero = $dni % 23;
+        $letraDni = $letras[$numero];
+        return $letraDni;
+    }
     
+    /**
+     * Pero ahora hemos puesto final en la función del padre, por lo que no se va a sobreescribir y va a dar error
+     */
+    // public function saludar(String $mensaje):String {
+    //     return "Hola mundo"; // Se ha sobreescrito el método de Persona con el mismo nombre
+    // }
+    
+
 }
 
 ?>
